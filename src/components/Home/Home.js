@@ -10,7 +10,6 @@ const Home = () => {
 
 
     const handleView = () => {
-        console.log("from handle");
         if (user == true) {
             setUser(false)
             setTimeout(() => {
@@ -21,9 +20,12 @@ const Home = () => {
         else {
             setView(!view)
         }
+        if (userManu == false) {
+            setUser(!user)
+        }
     }
+    console.log(user, "user");
     const handleUser = () => {
-        console.log("from handle");
         if (view == true) {
             setView(false)
             setTimeout(() => {
@@ -36,27 +38,34 @@ const Home = () => {
         }
     }
 
+    const handleUserManu = () => {
+        setUserManu(!userManu)
+        setUser(!user)
+
+    }
+
+
 
     return (
         <div className=''>
             <div className='bg-slate-900 flex'>
 
 
-                <div onMouseEnter={() => setHome(true)} onMouseLeave={() => setHome(false)} className="bg-gray-400 w-[60px] hover:w-[200px] transition-all duration-500 ease-in-out">
+                <div onMouseEnter={() => setHome(true)} onMouseLeave={() => setHome(false)} className={userManu == true ? "bg-gray-400 w-[200px] transition-all duration-500 ease-in-out" : "bg-gray-400 w-[60px] hover:w-[200px] transition-all duration-500 ease-in-out"}>
                     <div className='ml-2 mt-2 h-[100vh]'>
-                        <div className={home == true ? "bg-slate-600 rounded-l-2xl flex justify-around items-center" : "flex justify-between items-center"}>
+                        <div className={home == true || userManu == true ? "bg-slate-600 rounded-l-2xl flex justify-around items-center" : "flex justify-between items-center"}>
                             <h1 className='text-white bg-red-500 p-2 rounded-full'><AiFillHome /></h1>
                             {/* <button className={home == true ? "block text-white transition-all duration-500 ease-in-out" : "hidden"}></button> */}
-                            <h1 className={home == true ? "text-white text-xl block z-99" : "hidden w-3 "}>Home</h1>
+                            <h1 className={home == true || userManu == true ? "text-white text-xl block z-99" : "hidden "}>Home</h1>
                         </div>
                     </div>
                 </div>
                 <div className=" w-[80%] ">
                     <div className='flex justify-end items-center mt-3'>
                         <div className='bg-gray-400 flex justify-center items-center rounded-3xl  p-2 btn'>
-                            <h1 className='text-white text-2xl mr-3'><BiUserCircle /></h1>
-                            <h1 className='text-white text-2xl'>User</h1>
-                            <button className='flex'><BiUserCircle /> User</button>
+                            {/* <h1 className='text-white text-2xl mr-3'><BiUserCircle /></h1>
+                            <h1 className='text-white text-2xl'>User</h1> */}
+                            <button onClick={handleUserManu} className='flex justify-center items-center text-white text-2xl'><BiUserCircle className='mr-2' /> User</button>
                         </div>
                     </div>
                     <div className='ml-5 bg-slate-700 p-3 my-5 rounded-xl flex flex-col'>
@@ -69,10 +78,13 @@ const Home = () => {
                                 </div>
 
                             </div>
-                            <h1 className={user == true ? 'h-[200px]  bg-white text-black transition-all duration-500 ease-in-out rounded-b-xl' : "h-[0px] opacity-0 transition-all duration-500 ease-in-out"}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ea quam dignissimos veritatis est unde id modi aliquid similique minima, laboriosam deserunt nostrum possimus iure earum eveniet aut ratione! Doloremque?</h1>
+                            <div className={user == true ? 'h-[200px]  bg-white text-black transition-all duration-500 ease-in-out rounded-b-xl p-3 ' : "h-[0px]  transition-all duration-500 ease-in-out opacity-0"}>
+                                <h1 className='text-xl font-bold text-center mt-3'>User Page</h1>
+                                <h1 >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ea quam dignissimos veritatis est unde id modi aliquid similique minima, laboriosam deserunt nostrum possimus iure earum eveniet aut ratione! Doloremque?</h1>
+                            </div>
                         </div>
-                        <div className={view == true ? " my-5 flex flex-col order-last transition-all duration-500 ease-in-out" : "my-5 flex flex-col transition-all duration-500 ease-in-out"}>
-                            <div onClick={handleView} className={view == true ? "bg-red-400 flex justify-between w-full rounded-t-2xl h-[40px]" : "bg-red-400 flex justify-between w-full h-[40px] rounded-2xl"}>
+                        <div onClick={handleView} className={view == true ? " my-5 flex flex-col order-last transition-all duration-500 ease-in-out" : "my-5 flex flex-col transition-all duration-500 ease-in-out"}>
+                            <div className={view == true ? "bg-red-400 flex justify-between w-full rounded-t-2xl h-[40px] " : "bg-red-400 flex justify-between w-full h-[40px] rounded-2xl"}>
 
                                 <button className={view == true ? " w-[95%] text-white text-xl" : " text-white w-[95%]  p-2 text-xl flex justify-center "}>View  </button>
                                 <div className='w-[5%] flex justify-center items-center'>
@@ -80,7 +92,8 @@ const Home = () => {
                                 </div>
 
                             </div>
-                            <div className={view == true ? 'h-[200px]  bg-white text-black transition-all duration-500 ease-in-out rounded-b-xl' : "h-[0px] opacity-0 transition-all duration-500 ease-in-out"}>
+                            <div className={view == true ? 'h-[200px]  bg-white text-black transition-all duration-500 ease-in-out rounded-b-xl p-3 ' : "h-[0px]  transition-all duration-500 ease-in-out opacity-0"}>
+                                <h1 className='text-xl font-bold text-center mt-3'>View Page</h1>
                                 <h1 >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ea quam dignissimos veritatis est unde id modi aliquid similique minima, laboriosam deserunt nostrum possimus iure earum eveniet aut ratione! Doloremque?</h1>
                             </div>
                         </div>
