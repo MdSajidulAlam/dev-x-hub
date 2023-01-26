@@ -10,9 +10,7 @@ const Home = () => {
     const [order, setOrder] = useState(false)
 
 
-    const handleView = () => {
 
-    }
     const handleUser = () => {
         // setView(false)
         // if (user == false && view == false) {
@@ -20,18 +18,27 @@ const Home = () => {
         // }
     }
     const handleUserArrow = () => {
-        if (order === true) {
-            console.log("inside Clicked")
-            setUser(true)
-        }
-        else if (user === false && view === true) {
+
+        if (user === false && view === true) {
             setView(false)
         }
         else if (user === false && view === false) {
-            setOrder(true)
+            setUser(true)
         }
+        // if (order === true) {
+        //     console.log("inside Clicked")
+        //     setUser(true)
+        // }
 
 
+    }
+
+
+
+    const handleView = () => {
+        if (user) {
+            setUser(false)
+        }
     }
 
     // useEffect(() => {
@@ -98,10 +105,10 @@ const Home = () => {
                 </div>
                 <div className=" w-[85%] bg-[#393E46]">
 
-                    <div className='ml-5  p-3 my-5 rounded-xl flex flex-col'>
+                    <div className='relative ml-5  px-3 pb-3  mb-5 rounded-xl flex flex-col'>
 
                         {/* ---------------------- USER------------------------ */}
-                        <div className={order === true ? "z-50 order-last my-5 flex flex-col  transition-all duration-1000 ease-in-out " : " my-5 flex flex-col  transition-all duration-1000 ease-in-out"}>
+                        <div className={user === true ? "absolute mt-20 flex flex-col  transition-all duration-1000 ease-in-out " : "absolute flex flex-col  transition-all duration-1000 ease-in-out mt-5"}>
                             <div onClick={handleUser} className={user === true ? "bg-[#9B0000] flex justify-between w-full h-[40px] rounded-t-2xl" : "bg-[#9B0000] flex justify-between w-full h-[40px] rounded-2xl"}>
 
                                 <button className={user === true ? " w-[95%] text-white text-xl " : " text-white w-[95%]  p-2 text-xl flex justify-center "}>User  </button>
@@ -119,11 +126,11 @@ const Home = () => {
                             </div>
                         </div>
                         {/* ---------------------------VIEW----------------------- */}
-                        <div onClick={handleView} className={order === true ? "order-first my-5 flex flex-col transition-all duration-500 ease-in-out" : " my-5 flex flex-col transition-all duration-500 ease-in-out"}>
+                        <div className={view === true ? "absolute mt-20 flex flex-col transition-all duration-500 ease-in-out " : view === false && user === false ? "absolute flex flex-col transition-all duration-500 ease-in-out mt-20" : "absolute flex flex-col transition-all duration-500 ease-in-out mt-5 "}>
                             <div className={view === true ? "bg-[#9B0000] flex justify-between w-full rounded-t-2xl h-[40px] " : "bg-[#9B0000] flex justify-between w-full h-[40px] rounded-2xl"}>
 
                                 <button className={view === true ? " w-[95%] text-white text-xl" : " text-white w-[95%]  p-2 text-xl flex justify-center "}>View  </button>
-                                {view === false && <div className='w-[5%] flex justify-center items-center'>
+                                {view === false && <div onClick={handleView} className='w-[5%] flex justify-center items-center'>
                                     <BiDownArrow className=" text-white  " />
                                 </div>}
 
