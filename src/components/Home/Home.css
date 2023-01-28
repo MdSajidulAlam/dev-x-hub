@@ -1,3 +1,9 @@
 .content-height {
     height: calc(100vh - 220px);
 }
+.side-height{
+    height: calc(100vh - 127px);
+}
+.side-height-nonactive{
+    height: calc(100vh - 37px);
+}

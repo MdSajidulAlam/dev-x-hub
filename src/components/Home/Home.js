@@ -41,10 +41,10 @@ const Home = () => {
   };
 
   const handleUserManu = () => {
-    setView(true)
-    setUser(false)
-    setUserOrder(false)
-    setViewOrder(true)
+    setView(true);
+    setUser(false);
+    setUserOrder(false);
+    setViewOrder(true);
     setTimeout(() => {
       setView(false);
     }, 1000);
@@ -75,44 +75,55 @@ const Home = () => {
         </div>
       </div>
       <div className=" flex">
-        {/* ------------------------ Sidebar-------------------- */}
         <div
           onMouseEnter={() => setHome(true)}
           onMouseLeave={() => setHome(false)}
-          className="w-[60px] hover:w-[200px] bg-[#171D26] transition-all duration-500 ease-in-out"
+          className="w-[60px] hover:w-[200px] bg-[#171D26] transition-all duration-500 ease-in-out "
         >
-          <div className="ml-2 mt-2 h-[100vh]">
-            <div className="flex justify-center items-center my-5 rounded-br-2xl">
-              <h1
+          <div className="ml-2 mt-2 h-[100vh] bg-[#393E46]">
+            {home && (
+              <div className="flex justify-center items-center py-5 bg-[#171D26] rounded-br-2xl">
+                <h1
+                  className={
+                    home
+                      ? "text-white text-3xl border-2 border-gray-300  p-2"
+                      : "hidden"
+                  }
+                >
+                  DEMO
+                </h1>
+              </div>
+            )}
+            <div className="bg-[#171D26]">
+              <div
                 className={
                   home
-                    ? "text-white text-3xl border-2 border-gray-300  p-2"
-                    : "hidden"
+                    ? "bg-[#393E46] rounded-l-2xl flex justify-between items-center w-[80%] ml-auto"
+                    : "bg-[#393E46] rounded-l-2xl flex justify-between items-center w-[80%] ml-auto mt-[103px]"
                 }
               >
-                DEMO
-              </h1>
+                <h1 className="text-white bg-[#9B0000] p-2 rounded-full">
+                  <AiFillHome />
+                </h1>
+                <h1
+                  className={home ? "text-white text-xl  mr-5 pb-1" : "hidden"}
+                >
+                  Home
+                </h1>
+              </div>
             </div>
             <div
               className={
                 home
-                  ? "bg-[#393E46] rounded-l-2xl flex justify-between items-center w-[80%] ml-auto"
-                  : "bg-[#393E46] rounded-l-2xl flex justify-between items-center w-[80%] ml-auto mt-[75px]"
+                  ? "bg-[#171D26] side-height rounded-tr-2xl"
+                  : "bg-[#171D26] side-height-nonactive"
               }
-            >
-              <h1 className="text-white bg-[#9B0000] p-2 rounded-full">
-                <AiFillHome />
-              </h1>
-              <h1 className={home ? "text-white text-xl  mr-5 pb-1" : "hidden"}>
-                Home
-              </h1>
-            </div>
+            ></div>
           </div>
         </div>
         <div className=" w-full bg-[#393E46]">
           <div className="relative ml-5  px-3 pb-3  mb-5 mr-5 rounded-xl flex flex-col">
             {/* ---------------------- USER------------------------ */}
-
             <div
               className={
                 !user && !userOrder
